@@ -6,18 +6,17 @@ from esa_snappy import ProductIO, Product, ProductData, ProductUtils
 # ----------------------------------------------------
 #
 # Description:
-# 1️⃣ Compute the weighting function w_u(m, n) (Eq. 5 from the paper):
+# 1️⃣ Compute the weighting function w_u(m, n):
 #        w_u(m, n) = - I(m, n) / ( I(m-1, n) + I(m+1, n) + I(m, n-1) + I(m, n+1) )
 #
-# 2️⃣ Adjust pixel values based on w_u(m, n) (Eq. 6 & 7):
+# 2️⃣ Adjust pixel values based on w_u(m, n):
 #        - If w_u(m, n) < 0   → Mainlobe is preserved
 #        - If 0 ≤ w_u(m, n) ≤ 1/2 → Sidelobe is suppressed (Pixel = 0)
 #        - If w_u(m, n) > 1/2  → Pixel is replaced with weighted neighbors
 #
 # 3️⃣ The method is applied separately for I (Real) and Q (Imaginary).
 #
-# This implementation extends the 1D-SVA from the paper to 2D:
-#  → Neighbors in both azimuth and range directions are considered.
+# Neighbors are in both azimuth and range directions considered.
 #
 # ----------------------------------------------------
 
@@ -49,7 +48,7 @@ def calculate_w_2d(data):
     """
     Compute the weighting function w_u(m, n) based on 2D neighbors.
 
-    Equation (Eq. 5):
+    Equation:
         w_u(m, n) = - I(m, n) / (I(m-1, n) + I(m+1, n) + I(m, n-1) + I(m, n+1))
 
     If neighbors are NaN, only valid values are used.
@@ -160,3 +159,4 @@ output_path = "SVA_filtered_output"  # <-- set your desired output path (no exte
 ProductIO.writeProduct(output_product, output_path, "BEAM-DIMAP")
 
 print(f"✅ SVA-filtered product successfully saved to: {output_path}.dim")
+
