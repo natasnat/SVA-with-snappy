@@ -18,10 +18,7 @@ The script performs the following steps:
 1. **Load Sentinel-1 SLC product** using `esa-snappy`.
 2. **Extract I and Q bands**.
 3. **Compute SVA weighting function** using 2D neighbors.
-4. **Apply SVA filtering**:
-   - If \( w_u(m, n) < 0 \) → Mainlobe preserved  
-   - If \( 0 \le w_u(m, n) \le 0.5 \) → Sidelobe suppressed (pixel set to 0)  
-   - If \( w_u(m, n) > 0.5 \) → Pixel replaced with weighted neighbors  
+4. **Apply SVA filtering**. 
 5. **Compute derived products**: amplitude and intensity.
 6. **Save filtered output** in BEAM-DIMAP format.
 
