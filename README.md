@@ -1,12 +1,12 @@
 # Sentinel-1 SAR Spatially Variant Apodization (SVA) Filter
 
-This repository contains a **Python implementation of Spatially Variant Apodization (SVA)** for **Sentinel-1 Single Look Complex (SLC) SAR images**. The script integrates with **ESA SNAP** via the `snappy` Python API to process SAR products.
+This repository contains a **Python implementation of SVA** for **Sentinel-1 Single Look Complex (SLC) SAR images**. The script integrates with **ESA SNAP** via the `snappy` Python API to process SAR products.
 
 ---
 
 ## 📖 Overview
 
-The **SVA Python script** was developed for **Sentinel-1 data integration within SNAP**. The Spatially Variant Apodization (SVA) method extends the approach proposed by Wang et al. (2012) [1] to **two-dimensional (2D) processing**, incorporating both **azimuth and range directions**.  
+The **SVA Python script** was developed for **Sentinel-1 data integration within SNAP**. The SVA method extends the approach proposed by Wang et al. (2012) [1] to **two-dimensional (2D) processing**, incorporating both **azimuth and range directions**.  
 
 SVA is applied **separately to the I (real) and Q (imaginary) components** of each SAR image, enabling:
 
