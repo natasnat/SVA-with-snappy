@@ -1,19 +1,29 @@
 # Sentinel-1 SAR Spatially Variant Apodization (SVA) Filter
 
+## 📖 Overview
+
 This repository contains a **Python implementation of SVA** for **Sentinel-1 Single Look Complex (SLC) SAR images**. The script integrates with **ESA SNAP** via the `snappy` Python API to process SAR products.
+
+For the amplitude-based SVA variant, a Band Maths graph is included for SNAP to replace the SVA-filtered phase with the original phase, preserving phase continuity.
+
+SVA processing is fully compatible with the SNAP2StaMPS workflow by Blasco et al. (2021) [1]. The workflow clearly describes procedures for full-scene SVA and amplitude-based SVA. 
+
+Test data are provided for:
+
+- Step after Enhanced Spectral Diversity (ESD)
+- After ESD + SVA
+- Interferograms for both SVA variants (entire scene and amplitude-based)
 
 ---
 
-## 📖 Overview
+## 📖 SVA Python script
 
-The **SVA Python script** was developed for **Sentinel-1 data integration within SNAP**. The SVA method extends the approach proposed by Wang et al. (2012) [1] to **two-dimensional (2D) processing**, incorporating both **azimuth and range directions**.  
+The **SVA Python script** was developed for **Sentinel-1 data integration within SNAP**. The SVA method extends the approach proposed by Wang et al. (2012) [2] to **two-dimensional (2D) processing**, incorporating both **azimuth and range directions**.  
 
 SVA is applied **separately to the I (real) and Q (imaginary) components** of each SAR image, enabling:
 
 - Improved sidelobe suppression  
 - Preservation of mainlobe features
-
-Note: For the amplitude-based SVA variant, a Band Maths graph for use in SNAP is included in this repository to replace the SVA filtered phase with original phase. 
 
 The script performs the following steps:
 
@@ -31,9 +41,12 @@ The script performs the following steps:
 - Python 3.10.16  
 - **SNAP-Python (snappy)** – Snappy is an internal plugin of SNAP, automatically installed during software setup and implemented by Brockman Consult Scientific Image Processing Toolbox.  
 - **NumPy** – for array computations (`pip install numpy`)
+- SNAP Version 9
+- SNAP2StaMPS Version 1 (Blasco et al. 2021)
 
 ---
 
 ## 🔗 References
 
-[1] Wang, Q.; Zhu, W.; Li, Z.; Ji, Z.; Sun, Y. (2012). *Module spatially variant apodization algorithm for enhancing radar images.* In **9th European Radar Conference** (pp. 294–297). IEEE.
+[1] Blasco, J. M. D. \& Foumelis, M. (2021). *SNAP2StaMPS v1.* Retrieved 20 August 2025 from https://github.com/mdelgadoblasco/snap2stamps/tree/v1.0.1
+[2] Wang, Q.; Zhu, W.; Li, Z.; Ji, Z.; Sun, Y. (2012). *Module spatially variant apodization algorithm for enhancing radar images.* In **9th European Radar Conference** (pp. 294–297). IEEE.
