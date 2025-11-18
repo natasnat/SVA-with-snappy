@@ -283,7 +283,7 @@
       <sourceProduct refid="BandMerge(3)"/>
     </sources>
     <parameters class="com.bc.ceres.binding.dom.XppDomElement">
-      <file>F:\Natascha\Masterarbeit\my_SVA_amplitude_nur_ifg\project\sva_amplitude\20230829_20231227_IW2.dim</file>
+      <file>C:\Users\Username\Path\to\Scene_after_SVA_Amplitude.dim</file>
       <formatName>BEAM-DIMAP</formatName>
     </parameters>
   </node>
