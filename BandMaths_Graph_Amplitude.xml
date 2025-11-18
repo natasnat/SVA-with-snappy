@@ -1,0 +1,353 @@
+<graph id="Graph">
+  <version>1.0</version>
+  <node id="Read">
+    <operator>Read</operator>
+    <sources/>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <useAdvancedOptions>false</useAdvancedOptions>
+      <file>C:\Users\Username\Path\to\Scene_after_ESD.dim</file>
+      <copyMetadata>true</copyMetadata>
+      <pixelRegion>3,0,26672,4557</pixelRegion>
+      <bandNames/>
+      <maskNames/>
+    </parameters>
+  </node>
+  <node id="Read(2)">
+    <operator>Read</operator>
+    <sources/>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <useAdvancedOptions>false</useAdvancedOptions>
+      <file>C:\Users\Username\Path\to\Scene_after_SVA.dim</file>
+      <copyMetadata>true</copyMetadata>
+      <pixelRegion>3,0,26672,4557</pixelRegion>
+      <bandNames/>
+      <maskNames/>
+    </parameters>
+  </node>
+  <node id="Subset">
+    <operator>Subset</operator>
+    <sources>
+      <sourceProduct refid="Read"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <sourceBands>i_IW2_VV_mst_29Aug2023,q_IW2_VV_mst_29Aug2023</sourceBands>
+      <tiePointGrids/>
+      <region>0,0,26698,4557</region>
+      <referenceBand/>
+      <geoRegion/>
+      <subSamplingX>1</subSamplingX>
+      <subSamplingY>1</subSamplingY>
+      <fullSwath>false</fullSwath>
+      <copyMetadata>true</copyMetadata>
+    </parameters>
+  </node>
+  <node id="BandMaths">
+    <operator>BandMaths</operator>
+    <sources>
+      <sourceProduct refid="Subset"/>
+      <sourceProduct.1 refid="Read(2)"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <targetBands>
+        <targetBand>
+          <name>i_IW2_VV_mst_29Aug2023</name>
+          <type>float32</type>
+          <expression>$1.i_IW2_VV_mst_29Aug2023 *(sqrt(( $2.i_IW2_VV_mst_29Aug2023 * $2.i_IW2_VV_mst_29Aug2023) + ($2.q_IW2_VV_mst_29Aug2023 * $2.q_IW2_VV_mst_29Aug2023)) / sqrt(($1.i_IW2_VV_mst_29Aug2023 * $1.i_IW2_VV_mst_29Aug2023) + ($1.q_IW2_VV_mst_29Aug2023 * $1.q_IW2_VV_mst_29Aug2023)))</expression>
+          <description/>
+          <unit/>
+          <noDataValue>0.0</noDataValue>
+        </targetBand>
+      </targetBands>
+      <variables/>
+    </parameters>
+  </node>
+  <node id="Read(3)">
+    <operator>Read</operator>
+    <sources/>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <useAdvancedOptions>false</useAdvancedOptions>
+      <file>C:\Users\Username\Path\to\Scene_after_ESD.dim</file>
+      <copyMetadata>true</copyMetadata>
+      <pixelRegion>3,0,26672,4557</pixelRegion>
+      <bandNames/>
+      <maskNames/>
+    </parameters>
+  </node>
+  <node id="Read(4)">
+    <operator>Read</operator>
+    <sources/>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <useAdvancedOptions>false</useAdvancedOptions>
+      <file>C:\Users\Username\Path\to\Scene_after_SVA.dim</file>
+      <copyMetadata>true</copyMetadata>
+      <pixelRegion>3,0,26672,4557</pixelRegion>
+      <bandNames/>
+      <maskNames/>
+    </parameters>
+  </node>
+  <node id="Subset(2)">
+    <operator>Subset</operator>
+    <sources>
+      <sourceProduct refid="Read(3)"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <sourceBands>i_IW2_VV_mst_29Aug2023,q_IW2_VV_mst_29Aug2023</sourceBands>
+      <tiePointGrids/>
+      <region>0,0,26698,4557</region>
+      <referenceBand/>
+      <geoRegion/>
+      <subSamplingX>1</subSamplingX>
+      <subSamplingY>1</subSamplingY>
+      <fullSwath>false</fullSwath>
+      <copyMetadata>true</copyMetadata>
+    </parameters>
+  </node>
+  <node id="BandMaths(2)">
+    <operator>BandMaths</operator>
+    <sources>
+      <sourceProduct refid="Subset(2)"/>
+      <sourceProduct.1 refid="Read(4)"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <targetBands>
+        <targetBand>
+          <name>q_IW2_VV_mst_29Aug2023</name>
+          <type>float32</type>
+          <expression>$1.q_IW2_VV_mst_29Aug2023 *(sqrt(( $2.i_IW2_VV_mst_29Aug2023 * $2.i_IW2_VV_mst_29Aug2023) + ($2.q_IW2_VV_mst_29Aug2023 * $2.q_IW2_VV_mst_29Aug2023)) / sqrt(($1.i_IW2_VV_mst_29Aug2023 * $1.i_IW2_VV_mst_29Aug2023) + ($1.q_IW2_VV_mst_29Aug2023 * $1.q_IW2_VV_mst_29Aug2023)))</expression>
+          <description/>
+          <unit/>
+          <noDataValue>0.0</noDataValue>
+        </targetBand>
+      </targetBands>
+      <variables/>
+    </parameters>
+  </node>
+  <node id="Read(5)">
+    <operator>Read</operator>
+    <sources/>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <useAdvancedOptions>false</useAdvancedOptions>
+      <file>C:\Users\Username\Path\to\Scene_after_ESD.dim</file>
+      <copyMetadata>true</copyMetadata>
+      <pixelRegion>3,0,26672,4557</pixelRegion>
+      <bandNames/>
+      <maskNames/>
+    </parameters>
+  </node>
+  <node id="Read(6)">
+    <operator>Read</operator>
+    <sources/>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <useAdvancedOptions>false</useAdvancedOptions>
+      <file>C:\Users\Username\Path\to\Scene_after_SVA.dim</file>
+      <copyMetadata>true</copyMetadata>
+      <pixelRegion>3,0,26672,4557</pixelRegion>
+      <bandNames/>
+      <maskNames/>
+    </parameters>
+  </node>
+  <node id="Subset(3)">
+    <operator>Subset</operator>
+    <sources>
+      <sourceProduct refid="Read(5)"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <sourceBands>i_IW2_VV_slv1_13May2023,q_IW2_VV_slv1_13May2023</sourceBands>
+      <tiePointGrids/>
+      <region>0,0,26698,4557</region>
+      <referenceBand/>
+      <geoRegion/>
+      <subSamplingX>1</subSamplingX>
+      <subSamplingY>1</subSamplingY>
+      <fullSwath>false</fullSwath>
+      <copyMetadata>true</copyMetadata>
+    </parameters>
+  </node>
+  <node id="BandMaths(3)">
+    <operator>BandMaths</operator>
+    <sources>
+      <sourceProduct refid="Subset(3)"/>
+      <sourceProduct.1 refid="Read(6)"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <targetBands>
+        <targetBand>
+          <name>i_IW2_VV_slv1_13May2023</name>
+          <type>float32</type>
+          <expression>$1.i_IW2_VV_slv1_13May2023 * (sqrt(($2.i_IW2_VV_slv1_13May2023 * $2.i_IW2_VV_slv1_13May2023)+($2.q_IW2_VV_slv1_13May2023 * $2.q_IW2_VV_slv1_13May2023))/sqrt(($1.i_IW2_VV_slv1_13May2023 * $1.i_IW2_VV_slv1_13May2023)+($1.q_IW2_VV_slv1_13May2023 * $1.q_IW2_VV_slv1_13May2023)))</expression>
+          <description/>
+          <unit/>
+          <noDataValue>0.0</noDataValue>
+        </targetBand>
+      </targetBands>
+      <variables/>
+    </parameters>
+  </node>
+  <node id="Read(7)">
+    <operator>Read</operator>
+    <sources/>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <useAdvancedOptions>false</useAdvancedOptions>
+      <file>C:\Users\Username\Path\to\Scene_after_ESD.dim</file>
+      <copyMetadata>true</copyMetadata>
+      <pixelRegion>3,0,26672,4557</pixelRegion>
+      <bandNames/>
+      <maskNames/>
+    </parameters>
+  </node>
+  <node id="Read(8)">
+    <operator>Read</operator>
+    <sources/>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <useAdvancedOptions>false</useAdvancedOptions>
+      <file>C:\Users\Username\Path\to\Scene_after_SVA.dim</file>
+      <copyMetadata>true</copyMetadata>
+      <pixelRegion>3,0,26672,4557</pixelRegion>
+      <bandNames/>
+      <maskNames/>
+    </parameters>
+  </node>
+  <node id="Subset(4)">
+    <operator>Subset</operator>
+    <sources>
+      <sourceProduct refid="Read(7)"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <sourceBands>i_IW2_VV_slv1_13May2023,q_IW2_VV_slv1_13May2023</sourceBands>
+      <tiePointGrids/>
+      <region>0,0,26698,4557</region>
+      <referenceBand/>
+      <geoRegion/>
+      <subSamplingX>1</subSamplingX>
+      <subSamplingY>1</subSamplingY>
+      <fullSwath>false</fullSwath>
+      <copyMetadata>true</copyMetadata>
+    </parameters>
+  </node>
+  <node id="BandMaths(4)">
+    <operator>BandMaths</operator>
+    <sources>
+      <sourceProduct refid="Subset(4)"/>
+      <sourceProduct.1 refid="Read(8)"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <targetBands>
+        <targetBand>
+          <name>q_IW2_VV_slv1_13May2023</name>
+          <type>float32</type>
+          <expression>$1.q_IW2_VV_slv1_13May2023 * (sqrt(($2.i_IW2_VV_slv1_13May2023 * $2.i_IW2_VV_slv1_13May2023)+($2.q_IW2_VV_slv1_13May2023 * $2.q_IW2_VV_slv1_13May2023))/sqrt(($1.i_IW2_VV_slv1_13May2023 * $1.i_IW2_VV_slv1_13May2023)+($1.q_IW2_VV_slv1_13May2023 * $1.q_IW2_VV_slv1_13May2023)))</expression>
+          <description/>
+          <unit/>
+          <noDataValue>0.0</noDataValue>
+        </targetBand>
+      </targetBands>
+      <variables/>
+    </parameters>
+  </node>
+  <node id="BandMerge(3)">
+    <operator>BandMerge</operator>
+    <sources>
+      <sourceProduct refid="BandMerge(2)"/>
+      <sourceProduct.1 refid="BandMerge"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <sourceBands/>
+      <geographicError>1.0E-5</geographicError>
+    </parameters>
+  </node>
+  <node id="BandMerge">
+    <operator>BandMerge</operator>
+    <sources>
+      <sourceProduct refid="BandMaths"/>
+      <sourceProduct.1 refid="BandMaths(2)"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <sourceBands/>
+      <geographicError>1.0E-5</geographicError>
+    </parameters>
+  </node>
+  <node id="BandMerge(2)">
+    <operator>BandMerge</operator>
+    <sources>
+      <sourceProduct refid="BandMaths(3)"/>
+      <sourceProduct.1 refid="BandMaths(4)"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <sourceBands/>
+      <geographicError>1.0E-5</geographicError>
+    </parameters>
+  </node>
+  <node id="Write">
+    <operator>Write</operator>
+    <sources>
+      <sourceProduct refid="BandMerge(3)"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <file>C:\Users\Username\Path\to\Scene_after_SVA_Amplitude.dim</file>
+      <formatName>BEAM-DIMAP</formatName>
+    </parameters>
+  </node>
+  <applicationData id="Presentation">
+    <Description/>
+    <node id="Read">
+      <displayPosition x="45.0" y="20.0"/>
+    </node>
+    <node id="Read(2)">
+      <displayPosition x="37.0" y="58.0"/>
+    </node>
+    <node id="Subset">
+      <displayPosition x="190.0" y="11.0"/>
+    </node>
+    <node id="BandMaths">
+      <displayPosition x="297.0" y="17.0"/>
+    </node>
+    <node id="Read(3)">
+      <displayPosition x="30.0" y="101.0"/>
+    </node>
+    <node id="Read(4)">
+      <displayPosition x="33.0" y="140.0"/>
+    </node>
+    <node id="Subset(2)">
+      <displayPosition x="185.0" y="96.0"/>
+    </node>
+    <node id="BandMaths(2)">
+      <displayPosition x="296.0" y="109.0"/>
+    </node>
+    <node id="Read(5)">
+      <displayPosition x="30.0" y="194.0"/>
+    </node>
+    <node id="Read(6)">
+      <displayPosition x="27.0" y="240.0"/>
+    </node>
+    <node id="Subset(3)">
+      <displayPosition x="176.0" y="194.0"/>
+    </node>
+    <node id="BandMaths(3)">
+      <displayPosition x="287.0" y="237.0"/>
+    </node>
+    <node id="Read(7)">
+      <displayPosition x="36.0" y="295.0"/>
+    </node>
+    <node id="Read(8)">
+      <displayPosition x="34.0" y="330.0"/>
+    </node>
+    <node id="Subset(4)">
+      <displayPosition x="199.0" y="281.0"/>
+    </node>
+    <node id="BandMaths(4)">
+      <displayPosition x="322.0" y="308.0"/>
+    </node>
+    <node id="BandMerge(3)">
+      <displayPosition x="533.0" y="172.0"/>
+    </node>
+    <node id="BandMerge">
+      <displayPosition x="541.0" y="27.0"/>
+    </node>
+    <node id="BandMerge(2)">
+      <displayPosition x="540.0" y="315.0"/>
+    </node>
+    <node id="Write">
+      <displayPosition x="701.0" y="176.0"/>
+    </node>
+  </applicationData>
+</graph>
