@@ -2,17 +2,13 @@
 
 ## 📖 Overview
 
-This repository contains a **Python implementation of SVA** for **Sentinel-1 Single Look Complex (SLC) SAR images**. The script integrates with **ESA SNAP** via the `snappy` Python API to process SAR products.
+This repository contains a **Python implementation of SVA** for **Sentinel-1 Single Look Complex (SLC) SAR images**. The script integrates with **ESA SNAP** via the `snappy` Python API to process SAR products. Is performed after ESD step of SNAP2StaMPS workflow by Blasco et al. (2021) [1]. 
+
+The workflow pngs clearly describe procedures for full-scene SVA and amplitude-based SVA. 
 
 For the amplitude-based SVA variant, a Band Maths graph is included for SNAP to replace the SVA-filtered phase with the original phase, preserving phase continuity.
 
-SVA processing is fully compatible with the SNAP2StaMPS workflow by Blasco et al. (2021) [1]. The workflow clearly describes procedures for full-scene SVA and amplitude-based SVA. 
-
-Test data are provided for:
-
-- Step after Enhanced Spectral Diversity (ESD)
-- After ESD + SVA
-- Interferograms for both SVA variants (entire scene and amplitude-based)
+Test data are provided for Step after Enhanced Spectral Diversity (ESD).
 
 ---
 
