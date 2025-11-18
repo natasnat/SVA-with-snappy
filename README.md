@@ -11,7 +11,9 @@ The **SVA Python script** was developed for **Sentinel-1 data integration within
 SVA is applied **separately to the I (real) and Q (imaginary) components** of each SAR image, enabling:
 
 - Improved sidelobe suppression  
-- Preservation of mainlobe features  
+- Preservation of mainlobe features
+
+Note: For the amplitude-based SVA variant, a Band Maths graph for use in SNAP is included in this repository to replace the SVA filtered phase with original phase. 
 
 The script performs the following steps:
 
